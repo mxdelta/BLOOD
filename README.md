@@ -1,3 +1,4 @@
+
 # BloodHound/SharpHound
 
 https://bloodhound.readthedocs.io/en/latest/data-collection/sharphound.html (Установка шарпхаунда)
