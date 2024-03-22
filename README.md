@@ -11,13 +11,17 @@ bloodhound-python --dns-tcp -ns 10.10.11.222 -u 'svc_ldap' -p 'lDaP_1n_th3_cle4r
 
 bloodhound-python -d htb.local -ns 10.10.10.161 -u 'svc-alfresco' -p 's3rvice'  -c all
 
+certipy find -u 'blwasp@lab.local' -p 'Password123!' -dc-ip  10.129.228.236  -bloodhound
+
 Запуск
 
 cd /usr/bin && sudo ./neo4j console
 
-cd /home/max/BloodHound-linux-x64_new && ./BloodHound --no-sandbox
+cd /home/max/BloodHound-linux-x64 && ./BloodHound --no-sandbox
 
+certiblood
 
+cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
 
 
