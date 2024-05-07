@@ -24,7 +24,9 @@ certiblood
 cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
 
+# Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
 
+MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
 
 
 
