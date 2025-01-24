@@ -31,4 +31,20 @@ MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RE
 
 
 
+
+
+cd ~
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+cd ~/BloodHound/examples/docker-compose
+docker compose pull && docker compose up
+
+
+0qXVuxZDpDW6DTuIiC1a0CtxBd52uFEz
+
+
+
+
+
  
