@@ -26,12 +26,13 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
 # Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
 
-MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
+    MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
 
 
 
 
 
+-----------Bloodhound CE
 
     cd ~
 
@@ -44,6 +45,12 @@ MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RE
     cd ~/BloodHound/examples/docker-compose
 
     docker compose pull && docker compose up
+
+
+---------
+    pipx install bloodhound-ce
+
+    bloodhound-ce-python -c all -ns 10.10.11.5 -dc freelancer.htb -d freelancer.htb --zip -u 'mikasaAckerman' -p 'IL0v3ErenY3ager'
 
 
 0qXVuxZDpDW6DTuIiC1a0CtxBd52uFEz
