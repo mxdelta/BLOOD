@@ -42,11 +42,15 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
     docker-compose --version
 
+    https://github.com/frankloginss/BloodHound-CE.git
+    
     cd ~/BloodHound/examples/docker-compose
 
     docker compose pull && docker compose up
 
 
+
+    docker-compose down -v
 ---------
     pipx install bloodhound-ce
 
