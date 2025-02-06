@@ -46,7 +46,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
     
     cd ~/BloodHound/examples/docker-compose
 
-    sudo docker-compose pull && sudo docker-compose up
+    sudo docker-compose pull && sudo [BLOODHOUND_PORT=8888] docker-compose up
 
 
 
