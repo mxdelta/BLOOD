@@ -46,7 +46,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
     
     cd ~/BloodHound/examples/docker-compose
 
-    docker compose pull && docker compose up
+    sudo docker-compose pull && sudo docker-compose up
 
 
 
