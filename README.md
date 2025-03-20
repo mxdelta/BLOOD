@@ -56,6 +56,8 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
     bloodhound-ce-python -c all -ns 10.10.11.5 [-dc freelancer.htb] -d freelancer.htb --zip -u 'mikasaAckerman' -p 'IL0v3ErenY3ager'
 
+admin
+
 so6FYxCyhtO9K6p8VXNcoT4S6oxtk5Wr
 
 
