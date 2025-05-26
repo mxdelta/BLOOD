@@ -61,6 +61,14 @@ admin
 YXkQXyzbnB69RuDjUy_a2s0MpSEIH8SY
 
 Silvercore_21
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+# получение информации об аккаунте  adam.silver
+     bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb get object adam.silver --attr userAccountControl
+ 
+     Изменение атрибута userAccountControl
+
+     bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set object adam.silver userAccountControl -v 512
 
 
 # WriteOwner
