@@ -29,7 +29,8 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
     MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
 
-
+# Это все пользователи которые могут подключатся удаленно
+    MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]->(g1:Group)) MATCH p2=(u1)-[:CanPSRemote*1..]->(c:Computer) RETURN p2
 
 
 
