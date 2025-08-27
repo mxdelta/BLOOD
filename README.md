@@ -60,7 +60,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
 admin
 
-YXkQXyzbnB69RuDjUy_a2s0MpSEIH8SY
+1ByF2E0ecmUnZkX2rMz1GDnct_ObYdNO
 
 Silvercore_21
 -------------------------------------------------------------------------------------------------------------------------------------------------
