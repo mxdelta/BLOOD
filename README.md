@@ -44,7 +44,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
     docker-compose --version
 
-    https://github.com/frankloginss/BloodHound-CE.git
+    git clone https://github.com/frankloginss/BloodHound-CE.git
     
     cd ~/BloodHound/examples/docker-compose
 
