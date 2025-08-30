@@ -202,3 +202,6 @@ python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_
 # Проверить в отношении гого пользователь можеть писать ACL (выполняет запрос к контроллеру домена Active Directory для получения списка всех объектов, к которым у текущего пользователя (mark.bbond) есть права на запись).
 
     bloodyAD --host dc01.mirage.htb -u mark.bbond -p '1day@atime' -k -d mirage.htb get writable
+
+# Команда используется для получения информации об объекте Active Directory с именем javier.mmarshall в домене mirage.htb. 
+    bloodyAD --host dc01.mirage.htb -u mark.bbond -p '1day@atime' -k -d mirage.htb get object javier.mmarshall
