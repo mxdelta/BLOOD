@@ -31,6 +31,12 @@ certiblood
 
 cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
+# AD-miner 
+    
+    https://github.com/AD-Security/AD_Miner
+    
+    AD-miner -cf My_Report -u neo4j -p Silvercore_21
+
 
 # Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
 
