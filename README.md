@@ -54,6 +54,8 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 admin:Silvercore_21
 neo4j:bloodhoundcommunityedition
 
+AD-miner -cf My_Report -u neo4j -p bloodhoundcommunityedition
+
     docker-compose down -v
 
 --------- Инсталяха из репозитория кали-----------------------------------------
