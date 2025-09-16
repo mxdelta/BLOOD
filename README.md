@@ -57,7 +57,7 @@ AD-miner -cf My_Report -u neo4j -p bloodhoundcommunityedition
 
     docker-compose down -v
 
---------- Инсталяха из репозитория кали-----------------------------------------
+--------- Инсталяха из репозитория кали----------------------------------------- НЕ ТРОГАТЬ!!!!!
    
     https://www.kali.org/tools/bloodhound/                    (сам блуд хоунд)
    
