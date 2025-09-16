@@ -26,14 +26,6 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
     AD-miner -cf My_Report -u neo4j -p Silvercore_21
 
 
-# Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
-
-    MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
-
-# Это все пользователи которые могут подключатся удаленно
-    MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]->(g1:Group)) MATCH p2=(u1)-[:CanPSRemote*1..]->(c:Computer) RETURN p2
-
-
 
 -----------Bloodhound CE
     https://blog.taipanbyte.ru/2024/BloodHound-Community-Edition-(BHCE)-Guide-(RU)        (описание)
@@ -68,6 +60,13 @@ admin:Silvercore_21!        (blood)
 neo4j:Silvercore_21         (Neo4j)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
+# Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
+
+    MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
+
+# Это все пользователи которые могут подключатся удаленно
+    MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]->(g1:Group)) MATCH p2=(u1)-[:CanPSRemote*1..]->(c:Computer) RETURN p2
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
       bloodhound-ce-python -c all -ns 10.10.11.5 [-dc freelancer.htb] -d freelancer.htb --zip -u 'mikasaAckerman' -p 'IL0v3ErenY3ager'
         bloodhound-python --dns-tcp -ns 10.10.11.222 -u 'svc_ldap' -p 'lDaP_1n_th3_cle4r!' -d 'authority.htb' -c all (Дампим снаружи домена - нужны креды)
