@@ -23,7 +23,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 # AD-miner 
     
     https://github.com/AD-Security/AD_Miner
-    
+    pipx install 'git+https://github.com/Mazars-Tech/AD_Miner.git'
     AD-miner -cf My_Report -u neo4j -p Silvercore_21
 
 
