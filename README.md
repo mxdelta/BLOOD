@@ -10,7 +10,7 @@
     ?sudo apt install neo4j
     ?https://github.com/SpecterOps/BloodHound-Legacy/releases/tag/v4.3.1
 
-    https://www.kali.org/tools/bloodhound/                    (сам блуд хоунд)
+    https://www.kali.org/tools/bloodhound/                    (сам блуд хоунд c neo4j) 
 
 
 Запуск
