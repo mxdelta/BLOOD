@@ -11,8 +11,15 @@
     ?https://github.com/SpecterOps/BloodHound-Legacy/releases/tag/v4.3.1
 
     https://www.kali.org/tools/bloodhound/                    (сам блуд хоунд c neo4j) 
+    admin:Silvercore_21
+    sudo bloodhound
 
-
+# AD-miner 
+    
+    https://github.com/AD-Security/AD_Miner
+    pipx install 'git+https://github.com/Mazars-Tech/AD_Miner.git'
+    AD-miner -cf My_Report -u neo4j -p Silvercore_21
+****************************************************************************
 Запуск
 
 cd /usr/bin && sudo ./neo4j console
