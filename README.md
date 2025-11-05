@@ -81,7 +81,8 @@ sudo bloodhound
 # Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
 
     MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
-
+# Этот запрос показывает кто находится в OU=DISABLE
+        MATCH (u:User) WHERE u.distinguishedname CONTAINS "OU=Disable" RETURN u
 # Это все пользователи которые могут подключатся удаленно
     MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]->(g1:Group)) MATCH p2=(u1)-[:CanPSRemote*1..]->(c:Computer) RETURN p2
 --------------------------------------------------------------------------------------------------------------------------------------------------
