@@ -73,7 +73,10 @@ sudo bloodhound
 # Общие запросы
     https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/
 
-
+# Этот запрос выводит непустое полк description но только в базе http://localhost:7474/browser)
+        MATCH (u:User) 
+    WHERE u.description IS NOT NULL 
+    RETURN u.name,u.description
 # Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
 
     MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
