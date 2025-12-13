@@ -16,7 +16,7 @@
 
 
 ****************************************************************************
-Запуск
+# Запуск dloodhound
 
 cd /usr/bin && sudo ./neo4j console
 
@@ -73,10 +73,17 @@ sudo bloodhound
 # Общие запросы
     https://hausec.com/2019/09/09/bloodhound-cypher-cheatsheet/
 
-# Этот запрос выводит непустое полк description но только в базе http://localhost:7474/browser)
+# Этот запрос выводит непустое поле description но только в базе http://localhost:7474/browser)
         MATCH (u:User) 
-    WHERE u.description IS NOT NULL 
-    RETURN u.name,u.description
+        WHERE u.description IS NOT NULL 
+        RETURN u.name,u.description
+
+# Найдите всех локальных администраторов и хост, администратором которого они являются 
+
+    MATCH (c:Computer) OPTIONAL MATCH (u1:User)-[:AdminTo]->(c) OPTIONAL MATCH (u2:User)-[:MemberOf*1..]->(:Group)-[:AdminTo]->(c) WITH COLLECT(u1) + COLLECT(u2) AS TempVar,c UNWIND TempVar AS Admins 
+    RETURN c.name AS COMPUTER, COUNT(DISTINCT(Admins)) AS ADMIN_COUNT,COLLECT(DISTINCT(Admins.name)) AS USERS 
+    ORDER BY ADMIN_COUNT DESC
+    
 # Этот запрос попытается найти случаи, когда компьютер имеет связь «AdminTo» с другим компьютером.
 
     MATCH p=(c1:Computer)-[r1:MemberOf*1..]->(g:Group)-[r2:AdminTo]->(n:Computer) RETURN p
