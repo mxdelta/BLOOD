@@ -100,7 +100,7 @@ sudo bloodhound
 
     nxc ldap tombwatcher.htb -u henry -p 'H3nry_987TGV!' --bloodhound --collection All --dns-server dc01.tombwatcher.htb
 
-    nxc ldap 192.168.200.30 -u 'Администратор' -p '123qweASD!qazwsxedc' --bloodhound --collection All --dns-server 192.168.200.30 --kdcHost DC1.gg.local --dns-tcp
+    nxc ldap 192.168.200.30 -u 'Администратор' -p '123qweASD!qazwsxedc' --bloodhound --collection All --dns-server 192.168.200.30 --kdcHost DC1.gage.local --dns-tcp
 
 
     certipy find -u 'blwasp@lab.local' -p 'Password123!' -dc-ip  10.129.228.236  -bloodhound
