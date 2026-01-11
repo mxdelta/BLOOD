@@ -21,8 +21,8 @@
 ! https://github.com/BloodHoundAD/BloodHound/releases
 ! https://github.com/SpecterOps/BloodHound-Legacy/releases
 
-    ?sudo apt install neo4j (по умолчанию neo4j neo4j)
-    ?https://github.com/SpecterOps/BloodHound-Legacy/releases/tag/v4.3.1
+    ?sudo apt install neo4j (по умолчанию neo4j neo4j) --> меняем на Silvercore_21
+    ?https://github.com/SpecterOps/BloodHound-Legacy/releases/tag/v4.3.1 (neo4j Silvercore_21)
 
     https://www.kali.org/tools/bloodhound/                    (сам блуд хоунд c neo4j) 
     admin:Silvercore_21
