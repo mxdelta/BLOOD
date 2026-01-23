@@ -62,7 +62,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
     docker-compose --version
 
     git clone https://github.com/frankloginss/BloodHound-CE.git
-
+      или если не заработает то -- curl -L https://ghst.ly/getbhce > docker-compose.yml 
     запуск
     cd ~/BloodHound-CE/examples/docker-compose && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
 
