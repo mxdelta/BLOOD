@@ -50,7 +50,9 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
 
 -----------Bloodhound CE
+
     https://blog.taipanbyte.ru/2024/BloodHound-Community-Edition-(BHCE)-Guide-(RU)        (описание)
+   
     cd ~
 
     sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
