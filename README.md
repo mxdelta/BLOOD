@@ -267,8 +267,9 @@ python3 bloodyAD.py -d puppy.htb -u levi.james -p 'KingofAkron2025!' --host <DC_
 # Заменить Password
     bloodyAD -u mark.bbond -p '1day@atime' --host dc01.mirage.htb -d mirage.htb -k set password javier.mmarshall 'Password123'
 
+# На кого пользователь иеет право на запись
 
-
+      bloodyAD --host dc.hercules.htb -d hercules.htb -u bob.w -k get writable
 
 # pedro 	Password17 	GenericAll (Group) 	ITAdmins
 bloodyAD --host 172.16.130.3 -d INLANEFREIGHT.HTB -u pedro -p Password17 add groupMember ITADMINS pedro
