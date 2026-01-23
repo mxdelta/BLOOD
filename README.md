@@ -11,6 +11,7 @@
 
      nxc ldap 192.168.200.30 -u 'Администратор' -p '123qweASD!qazwsxedc' --bloodhound --collection All --dns-server 192.168.200.30 --kdcHost DC1.gage.local --dns-tcp
 
+      ~/rusthound-ce-Linux-gnu-x86_64/rusthound-ce --domain hercules.htb -u ken.w -p 'change*th1s_p@ssw()rd!!' --zip
 
      certipy find -u 'blwasp@lab.local' -p 'Password123!' -dc-ip  10.129.228.236  -bloodhound
 
@@ -59,7 +60,8 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
     docker-compose --version
 
     git clone https://github.com/frankloginss/BloodHound-CE.git
-    
+
+    запуск
     cd ~/BloodHound-CE/examples/docker-compose && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
 
 Пароль выходит в процессе.
