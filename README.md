@@ -32,6 +32,7 @@
 
 ****************************************************************************
 # Запуск dloodhound
+
 cd /usr/bin && sudo ./neo4j console
 
 cd /home/max/BloodHound-linux-x64 && ./BloodHound --no-sandbox
@@ -50,17 +51,17 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
 -----------Bloodhound CE
 
-   wget https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/bloodhound-cli-linux-amd64.tar.gz
-   tar -xvzf bloodhound-cli-linux-amd64.tar.gz
-    ./bloodhound-cli install
+         wget https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/bloodhound-cli-linux-amd64.tar.gz
+         tar -xvzf bloodhound-cli-linux-amd64.tar.gz
+          ./bloodhound-cli install
       
-[+] BloodHound is ready to go!
-[+] You can log in as `admin` with this password: RzdBRZeENuHbEZamLHms0mp2p2aExFAi
-[+] You can get your admin password by running: bloodhound-cli config get default_password
-[+] You can access the BloodHound UI at: http://127.0.0.1:8080/ui/login
+      [+] BloodHound is ready to go!
+      [+] You can log in as `admin` with this password: RzdBRZeENuHbEZamLHms0mp2p2aExFAi
+      [+] You can get your admin password by running: bloodhound-cli config get default_password
+      [+] You can access the BloodHound UI at: http://127.0.0.1:8080/ui/login
       
     ./bloodhound-cli resetpwd
-    
+    **************************************
     
     https://blog.taipanbyte.ru/2024/BloodHound-Community-Edition-(BHCE)-Guide-(RU)        (описание)
    
@@ -79,7 +80,9 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
 
       или если не заработает то -- curl -L https://ghst.ly/getbhce > docker-compose.yml 
       cd /home/max/Bloodhound && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
-
+      
+      TilgQpPD5fV_j7vUEucTpnrR49V7kIqy
+      
 Пароль выходит в процессе.
 admin:Silvercore_21
 neo4j:bloodhoundcommunityedition
