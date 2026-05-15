@@ -60,7 +60,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
       [+] You can get your admin password by running: bloodhound-cli config get default_password
       [+] You can access the BloodHound UI at: http://127.0.0.1:8080/ui/login
       
-    ./bloodhound-cli resetpwd
+       ./bloodhound-cli resetpwd
     **************************************
     
     https://blog.taipanbyte.ru/2024/BloodHound-Community-Edition-(BHCE)-Guide-(RU)        (описание)
@@ -79,7 +79,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
     cd ~/BloodHound-CE/examples/docker-compose && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
 
       или если не заработает то -- curl -L https://ghst.ly/getbhce > docker-compose.yml 
-      cd /home/max/Bloodhound && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
+      cd /home/max/Bloodhound-CE && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
       
       TilgQpPD5fV_j7vUEucTpnrR49V7kIqy
       
