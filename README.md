@@ -82,7 +82,7 @@ cd ~/blood_ly4k/BloodHound-linux-x64/ && ./BloodHound --no-sandbox
       cd /home/max/Bloodhound-CE && sudo docker-compose pull && sudo [BLOODHOUND_PORT=8080] docker-compose up
       
       TilgQpPD5fV_j7vUEucTpnrR49V7kIqy
-      
+      ./bloodhound-cli containers start !!!!!!!!!
 Пароль выходит в процессе.
 admin:Silvercore_21
 neo4j:bloodhoundcommunityedition
